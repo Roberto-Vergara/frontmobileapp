@@ -27,16 +27,14 @@ export default function PantallaRechazo({ visible, item, nota, onClose, onConfir
   const manejarConfirmar = () => {
     if (!tipoDefecto) return alert("Selecciona un tipo de defecto");
     
-    // Enviamos el objeto con la nueva propiedad 'reposicion'
     onConfirm({ 
       ...item, 
       motivoRechazo: tipoDefecto, 
       comentarioAdicional: comentario,
       idVendedor: nota.cabecera.ID_VENDEDOR.trim(),
-      reposicion: reposicion // true o false
+      reposicion: reposicion 
     });
 
-    // Resetear estados al terminar
     setTipoDefecto(''); 
     setComentario(''); 
     setFoto(null);
