@@ -33,7 +33,7 @@ export const loginRequest = async (email, password) => {
 
     } catch (error) {
         // 2. ESTO ES CLAVE: Si falla, el celular te dirá por qué.
-        console.error("Error en loginRequest:", error);
+        console.error("Error en loginRequesta:", error);
         
         let mensajeError = "No se pudo conectar con el servidor.";
         if (error.message) mensajeError = error.message;
