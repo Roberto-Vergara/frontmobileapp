@@ -6,6 +6,7 @@ import {
 import axios from "axios";
 import ModalRechazo from './PantallaRechazo'; 
 import {useRechazoCache} from "../context/RechazoContext"
+import { useAuth } from '../context/AuthContext';
 
 // const API_URL = "http://186.67.187.227:3001/auth";
 const host_url_local = "localhost"
@@ -27,6 +28,8 @@ export default function FormRechazo() {
   const [loading, setLoading] = useState(false);
   const [isModalVisible, setModalVisible] = useState(false);
   const [itemSeleccionado, setItemSeleccionado] = useState(null);
+
+  const { token } = useAuth();
 
   const formatearFecha = (fechaNum) => {
     if (!fechaNum) return "";
@@ -93,7 +96,7 @@ export default function FormRechazo() {
     setLoading(true);
     try {
       const url = `${url_local}/rechazos`; 
-      const response = await axios.post(url, cacheSelecteds);
+      const response = await axios.post(url, cacheSelecteds,{headers:{"Authorization":`Bearer ${token}`,'Content-Type': 'application/json'}});
 
       if (response.data.ok) {
         Alert.alert("Éxito", response.data.msg);

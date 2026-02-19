@@ -33,14 +33,18 @@ export const loginRequest = async (email, password) => {
 
     } catch (error) {
         // 2. ESTO ES CLAVE: Si falla, el celular te dirá por qué.
-        console.error("Error en loginRequesta:", error);
+        // console.error("Error en loginRequesta:", error);
         
         let mensajeError = "No se pudo conectar con el servidor.";
         if (error.message) mensajeError = error.message;
         
+
         Alert.alert("Error de Conexión", 
-            `${mensajeError}\n\nVerifica que la IP ${url_local} sea correcta y que el servidor esté encendido.`
+            `${mensajeError}`
         );
+        // Alert.alert("Error de Conexión", 
+        //     `${mensajeError}\n\nVerifica que la IP ${url_local} sea correcta y que el servidor esté encendido.`
+        // );
         
         throw error; 
     }

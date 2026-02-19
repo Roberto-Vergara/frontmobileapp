@@ -19,10 +19,6 @@ export default function PantallaRechazo({ visible, item, nota, onClose, onConfir
     "Falla materia prima", "Error de fabricación", "Error datos vendedor"
   ];
 
-  const tomarFoto = async () => {
-    const result = await ImagePicker.launchCameraAsync({ quality: 0.5, allowsEditing: true });
-    if (!result.canceled) setFoto(result.assets[0].uri);
-  };
 
   const manejarConfirmar = () => {
     if (!tipoDefecto) return alert("Selecciona un tipo de defecto");
